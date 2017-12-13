@@ -1,14 +1,14 @@
 /**
  * Canvas Wrapper object to handle pixel level drawing on the HTML5 Canvas as well as manage the canvas
- * Automatically deploys a canvas to the body
- *
+ * Automatically deploys a canvas to the body (for now)
+ * 
  * (Now in ES6)
  * 
  * @author  James Wake (SparkX120)
  * @version 0.0.5 (2017/12)
  * @license MIT
  */
-class Canvas2D {
+export default class Canvas2D {
 	constructor(config){
 		// //Create the Canvas and Deploy it
 		this.container = document.createElement('div');
@@ -114,5 +114,3 @@ class Canvas2D {
 		this.context.stroke();
 	}
 }
-
-module.exports = Canvas2D;

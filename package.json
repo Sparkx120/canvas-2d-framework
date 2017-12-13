@@ -20,5 +20,14 @@
   "bugs": {
     "url": "https://github.com/Sparkx120/canvas-2d-framework/issues"
   },
-  "homepage": "https://github.com/Sparkx120/canvas-2d-framework#readme"
+  "homepage": "https://github.com/Sparkx120/canvas-2d-framework#readme",
+  "browserify": {
+    "transform": [["babelify", { "presets": ["es2015"] }]]
+  },
+  "dependencies": {
+    "babel-core": "^6.26.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babelify": "^8.0.0",
+    "browserify": "^14.5.0"
+  },
 }
