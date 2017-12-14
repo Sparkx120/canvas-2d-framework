@@ -26,18 +26,21 @@ export default class Canvas2D {
         if(config && config.supersampling)
 			this.supersampling = config.supersampling;
 
-		if(config.style)
-			this.canvas.style = config.style;
+		if(config.convasStyle)
+			this.canvas.style = config.canvasStyle;
+
+		if(config.containerStyle)
+			this.container.style = config.containerStyle;
 
 		if(config.width)
-			this.canvas.style.width = config.width;
+			this.container.width = config.width;
 		else 
-			this.canvas.style.width = "100vw";
+			this.container.width = "100vw";
 
 		if(config.height)
-			this.canvas.style.height = config.height;
+			this.container.height = config.height;
 		else
-			this.canvas.style.height = "100vh";
+			this.container.height = "100vh";
 		
 		document.body.appendChild(this.container);
 
