@@ -5,7 +5,7 @@
  * (Now in ES6)
  * 
  * @author  James Wake (SparkX120)
- * @version 0.0.5 (2017/12)
+ * @version 0.0.6 (2017/12)
  * @license MIT
  */
 export default class Canvas2D {
@@ -14,9 +14,7 @@ export default class Canvas2D {
 		this.container = document.createElement('div');
 		this.canvas = document.createElement('canvas');
 		//this.canvas.style.border      = "1px solid black";
-		this.canvas.style.width       = "100vw";
-		this.canvas.style.height      = "100vh";
-		this.canvas.style.position    = "absolute";
+		
 		this.container.style.margin   = "0%";
 		this.container.style.width    = "100vw";
 		this.container.style.height   = "100vh";
@@ -26,12 +24,26 @@ export default class Canvas2D {
         this.supersampling = 1.0;
         
         if(config && config.supersampling)
-            this.supersampling = config.supersampling;
-        
+			this.supersampling = config.supersampling;
+
+		if(config.style)
+			this.canvas.style = config.style;
+
+		if(config.width)
+			this.canvas.style.width = config.width;
+		else 
+			this.canvas.style.width = "100vw";
+
+		if(config.height)
+			this.canvas.style.height = config.height;
+		else
+			this.canvas.style.height = "100vh";
+		
 		document.body.appendChild(this.container);
 
 		//Positioning and Scaling
 		this.rect = this.canvas.getBoundingClientRect();
+		//TODO Remove Dependency on jQuery
 		$(window).on('resize', (event) => {
 			this.rect = this.canvas.getBoundingClientRect();
 			this.canvas.width = this.rect.width;
@@ -50,7 +62,7 @@ export default class Canvas2D {
 		//Persistant Pixel Image Data Object
 		this.pixelImageData = this.context.createImageData(1,1);
 		this.buffer = this.context.createImageData(this.width, this.height);
-		console.log(this);
+		// console.log(this);
 		// this.pixelData = this.pixelImageData.data
 	}
     
