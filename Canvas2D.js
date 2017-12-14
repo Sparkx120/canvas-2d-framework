@@ -15,13 +15,6 @@ export default class Canvas2D {
 		this.canvas = document.createElement('canvas');
 		//this.canvas.style.border      = "1px solid black";
 		
-		this.container.style.margin   = "0%";
-		this.container.style.width    = "100vw";
-		this.container.style.height   = "100vh";
-		this.container.style.position = "relative";
-		this.context = this.canvas.getContext('2d');
-		this.container.appendChild(this.canvas);
-        this.supersampling = 1.0;
         
         if(config && config.supersampling)
 			this.supersampling = config.supersampling;
@@ -31,6 +24,11 @@ export default class Canvas2D {
 
 		if(config.containerStyle)
 			this.container.style = config.containerStyle;
+
+		this.container.style.margin   = "0%";
+		this.container.style.width    = "100vw";
+		this.container.style.height   = "100vh";
+		this.container.style.position = "relative";
 
 		if(config.width)
 			this.container.width = config.width;
@@ -42,6 +40,11 @@ export default class Canvas2D {
 		else
 			this.container.height = "100vh";
 		
+
+		this.context = this.canvas.getContext('2d');
+		this.container.appendChild(this.canvas);
+		this.supersampling = 1.0;
+
 		document.body.appendChild(this.container);
 
 		//Positioning and Scaling
