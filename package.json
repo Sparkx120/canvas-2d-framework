@@ -1,6 +1,6 @@
 {
   "name": "canvas-2d-framework",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "An HTML5 Canvas Wrapper Library",
   "main": "Canvas2D.js",
   "scripts": {
