@@ -10,41 +10,43 @@
  */
 export default class Canvas2D {
 	constructor(config){
-		// //Create the Canvas and Deploy it
+		//Create the Canvas and Deploy it
 		this.container = document.createElement('div');
 		this.canvas = document.createElement('canvas');
-		//this.canvas.style.border      = "1px solid black";
-		
-		this.container.style.width = "100vw";
-		this.container.style.height = "100vh";
 
-        if(config && config.supersampling)
+		if(config && config.supersampling)
 			this.supersampling = config.supersampling;
+		else
+			this.supersampling = 1.0;
 
-		if(config.convasStyle)
-			this.canvas.style = config.canvasStyle;
+		if(config.canvasStyle){
+			for(i in config.canvasStyle){
+				this.canvas.style[i] = config.canvasStyle[i];
+			}
+		}
 
-		if(config.containerStyle)
-			this.container.style = config.containerStyle;
-
-		// this.container.style.margin   = "0%";
-		// this.container.style.width    = "100vw";
-		// this.container.style.height   = "100vh";
-		// this.container.style.position = "relative";
-
+		if(config.containerStyle){
+			for(i in config.containerStyle){
+				this.container.style[i] = config.containerStyle[i];
+			}
+		}
+		else{
+			this.container.style.margin   = "0%";
+			this.container.style.width    = "100vw";
+			this.container.style.height   = "100vh";
+			this.container.style.position = "relative";
+		}
 		
-
 		this.context = this.canvas.getContext('2d');
 		this.container.appendChild(this.canvas);
-		this.supersampling = 1.0;
 
 		document.body.appendChild(this.container);
 
 		//Positioning and Scaling
-		this.rect = this.canvas.getBoundingClientRect();
+		this.rect = this.container.getBoundingClientRect();
 		//TODO Remove Dependency on jQuery
 		$(window).on('resize', (event) => {
-			this.rect = this.canvas.getBoundingClientRect();
+			this.rect = this.container.getBoundingClientRect();
 			this.canvas.width = this.rect.width;
 			this.canvas.height = this.rect.height;
 			this.width = this.rect.width;
