@@ -78,16 +78,16 @@ export default class Canvas2D {
 		//Compute Dimensions to use
         this.supersampling = supersampling;
         this.rect = this.canvas.getBoundingClientRect();
-        this.canvas.width = this.rect.width;
-		this.canvas.height = this.rect.height;
-        this.width = this.rect.width;
-		this.height = this.rect.height;
+        this.canvas.width = Math.floor(this.rect.width);
+		this.canvas.height = Math.floor(this.rect.height);
+        this.width = Math.floor(this.rect.width);
+		this.height = Math.floor(this.rect.height);
 		this.context.scale(1/supersampling,1/supersampling);
 		
 		//Setup the supersampled ArrayBuffer
 		this.buffer = this.context.createImageData(this.getWidth(), this.getHeight());
-		this.bufferedImage.width = this.rect.width*supersampling;
-		this.bufferedImage.height = this.rect.height*supersampling;
+		this.bufferedImage.width = this.getWidth();
+		this.bufferedImage.height = this.getHeight();
         return this;
     }
 	
@@ -96,7 +96,7 @@ export default class Canvas2D {
 	 * @returns the width with supersampling
 	 */
     getWidth(){
-        return this.width*this.supersampling;
+        return Math.floor(this.width*this.supersampling);
     }
 	
 	/**
@@ -104,7 +104,7 @@ export default class Canvas2D {
 	 * @returns the height with supersampling
 	 */
     getHeight(){
-        return this.height*this.supersampling;
+        return Math.floor(this.height*this.supersampling);
     }
 
 	/**
