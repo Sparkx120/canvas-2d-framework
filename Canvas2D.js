@@ -54,6 +54,12 @@ export default class Canvas2D {
 				this.resizeCB();
 			}
 		});
+		window.addEventListener('load', (event) => {
+			this.setSupersampling(this.supersampling);
+			if(this.resizeCB){
+				this.resizeCB();
+			}
+		});
 		this.canvas.width = this.rect.width;
 		this.canvas.height = this.rect.height;
 		this.width = this.rect.width;
