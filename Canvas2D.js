@@ -96,7 +96,7 @@ export default class Canvas2D {
 	 * @returns the width with supersampling
 	 */
     getWidth(){
-        return Math.floor(this.width*this.supersampling);
+        return Math.ceil(this.width*this.supersampling);
     }
 	
 	/**
@@ -104,7 +104,7 @@ export default class Canvas2D {
 	 * @returns the height with supersampling
 	 */
     getHeight(){
-        return Math.floor(this.height*this.supersampling);
+        return Math.ceil(this.height*this.supersampling);
     }
 
 	/**
