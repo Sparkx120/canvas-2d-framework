@@ -21,12 +21,12 @@ export default class Canvas2D {
 		else
 			this.supersampling = 1.0;
 
-		if(config.canvasStyle){
+		if(config && config.canvasStyle){
 			for(let i in config.canvasStyle){
 				this.canvas.style[i] = config.canvasStyle[i];
 			}
 		}
-		if(config.containerStyle){
+		if(config && config.containerStyle){
 			for(let i in config.containerStyle){
 				this.container.style[i] = config.containerStyle[i];
 			}
